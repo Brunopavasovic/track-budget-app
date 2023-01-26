@@ -42,7 +42,7 @@ export const TopNavDesktop = () => {
             Add Expenses
           </Button>
         </RouterLink>
-        <RouterLink to={""}>Expenses</RouterLink>
+        <RouterLink to="/expense-desktop">Expenses</RouterLink>
       </Box>
     </Box>
   );
