@@ -3,7 +3,6 @@ import { TopNavDesktop } from "./Desktop/TopNavDesktop";
 import { Outlet } from "react-router-dom";
 import { TopNavMobile } from "./Mobile/TopNavMobile";
 import { BottomNavBar } from "./Mobile/BottomNavBar";
-import { BudgetItemsProvider } from "../BudgetItemsContext";
 
 export const Main = () => {
   return (

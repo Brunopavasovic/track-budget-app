@@ -15,10 +15,10 @@ export const BudgetItemsProvider = ({ children }: ShowItemsProviderProps) => {
   const [items, setItems] = useState<BudgetItems[]>(savedItems);
 
   const current = new Date();
-  const time = current.toLocaleTimeString("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
+  const time = current.toLocaleDateString("en-us", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
   });
 
   useEffect(() => {
@@ -29,7 +29,10 @@ export const BudgetItemsProvider = ({ children }: ShowItemsProviderProps) => {
     setItems((prev) => [...prev, { ...data, id: Date.now(), date: time }]);
   };
 
-  const removeItem = () => {};
+  const removeItem = (id: number) => {
+    const deleted = items.filter((item) => item.id !== id);
+    setItems(deleted);
+  };
 
   return (
     <BudgetItemsContext.Provider value={{ onSubmit, removeItem, items }}>

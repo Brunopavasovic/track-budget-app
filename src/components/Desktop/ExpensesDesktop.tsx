@@ -10,8 +10,10 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React from "react";
+import { useBudgetContext } from "../../BudgetItemsContext";
 
 export const ExpensesDesktop = () => {
+  const { items } = useBudgetContext();
   return (
     <Box display={["none", "none", "table"]} w="100vw" h="100vh">
       <TableContainer mt="50px">
@@ -26,15 +28,20 @@ export const ExpensesDesktop = () => {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>Lunch</Td>
-              <Td>Acomodation</Td>
-              <Td>10e</Td>
-              <Td>{Date.now()}</Td>
-              <Td>
-                <Button colorScheme="red">X</Button>
-              </Td>
-            </Tr>
+            {items &&
+              items.map((item) => {
+                return (
+                  <Tr>
+                    <Td>{item.name}</Td>
+                    <Td>{item.category}</Td>
+                    <Td>{`${item.amount}$`}</Td>
+                    <Td>{Date.now()}</Td>
+                    <Td>
+                      <Button colorScheme="red">X</Button>
+                    </Td>
+                  </Tr>
+                );
+              })}
           </Tbody>
         </Table>
       </TableContainer>

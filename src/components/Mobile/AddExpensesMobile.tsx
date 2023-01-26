@@ -20,20 +20,16 @@ export const AddExpensesMobile = () => {
     <Box
       height="full"
       flexDirection="column"
-      display={["flex", "flex", "none"]}
+      display={["flex", "flex", "flex"]}
       alignItems="center"
       h="full"
     >
       <VStack mt="100px" w="70%">
         <FormProvider {...methods}>
-          <form
-            onSubmit={methods.handleSubmit((data) => {
-              onSubmit(data);
-            })}
-          >
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
             <Stack spacing={3}>
               <FormLabel>Item name:</FormLabel>
-              <Input {...methods.register("itemName")} type="text" />
+              <Input {...methods.register("name")} type="text" />
               <FormLabel>Select category:</FormLabel>
               <Select {...methods.register("category")}>
                 <option>Groceries</option>
@@ -41,7 +37,7 @@ export const AddExpensesMobile = () => {
               </Select>
               <FormLabel>Amount:</FormLabel>
               <Input {...methods.register("amount")} type="number" />
-              <Button>Add Item</Button>
+              <Button type="submit">Add Item</Button>
             </Stack>
           </form>
         </FormProvider>

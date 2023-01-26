@@ -8,7 +8,7 @@ export interface BudgetContextType {
 
 export interface BudgetItems {
   id: number;
-  itemName: string;
+  name: string;
   category: string;
   date: string;
   amount: number;
