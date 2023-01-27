@@ -3,6 +3,7 @@ import {
   BudgetContextType,
   ShowItemsProviderProps,
   BudgetItems,
+  NewItemsType,
 } from "./components/types/type";
 
 const savedItems = () => {
@@ -13,12 +14,21 @@ const savedItems = () => {
 export const BudgetItemsContext = createContext<BudgetContextType | null>(null);
 export const BudgetItemsProvider = ({ children }: ShowItemsProviderProps) => {
   const [items, setItems] = useState<BudgetItems[]>(savedItems);
+  const [splitItems, setSplitItems] = useState<Record<string, NewItemsType>>(
+    {}
+  );
+
+  useEffect(() => {
+    /*  const spliting = items.reduce((all , item) => {
+       
+    }) */
+  });
 
   const current = new Date();
-  const time = current.toLocaleDateString("en-us", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
+  const time = current.toLocaleTimeString("en-gb", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
   });
 
   useEffect(() => {

@@ -14,6 +14,11 @@ export interface BudgetItems {
   amount: number;
 }
 
+export type NewItemsType = {
+  date: string;
+  items: BudgetItems[];
+};
+
 export type ShowItemsProviderProps = {
   children: ReactNode;
 };

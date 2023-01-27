@@ -11,6 +11,7 @@ export const ExpensesMobile = () => {
 
   return (
     <Box display={["flex", "flex", "none"]} flexDirection="column" h="full">
+      <>{<DateInfoTrack />}</>
       {items &&
         items.map((item) => {
           return (
@@ -22,19 +23,21 @@ export const ExpensesMobile = () => {
                 justifyContent="space-between"
               >
                 <Box
+                  ml="10px"
                   p="5px"
                   alignItems="center"
-                  justifyContent="space-evenly"
                   display="flex"
                   w="150px"
                 >
-                  {item.category === "Groceries" ? (
-                    <MdFastfood color="green" />
-                  ) : (
-                    <GiCommercialAirplane color="blue" />
-                  )}
+                  <Box w="40px">
+                    {item.category === "Groceries" ? (
+                      <MdFastfood color="green" />
+                    ) : (
+                      <GiCommercialAirplane color="blue" />
+                    )}
+                  </Box>
 
-                  <Box ml="5px">
+                  <Box w="100%">
                     <Text fontWeight="semibold">{item.name}</Text>
                     <Text color="gray.400" mt="-5px" fontSize="sm">
                       {item.category}
@@ -42,7 +45,10 @@ export const ExpensesMobile = () => {
                   </Box>
                 </Box>
                 <Box textAlign="center" w="20%">
-                  <Text fontWeight="semibold">{`${item.amount}$`}</Text>
+                  <Text
+                    color="red.700"
+                    fontWeight="semibold"
+                  >{`-${item.amount}$`}</Text>
                   <Text color="gray.400" mt="-5px" fontSize="sm">
                     {item.date}
                   </Text>
