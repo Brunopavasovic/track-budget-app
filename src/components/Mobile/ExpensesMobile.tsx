@@ -7,11 +7,10 @@ import { useBudgetContext } from "../../BudgetItemsContext";
 import { DateInfoTrack } from "./DateInfoTrack";
 
 export const ExpensesMobile = () => {
-  const { items, removeItem } = useBudgetContext();
+  const { items, removeItem, splitItems } = useBudgetContext();
 
   return (
     <Box display={["flex", "flex", "none"]} flexDirection="column" h="full">
-      <>{<DateInfoTrack />}</>
       {items &&
         items.map((item) => {
           return (
@@ -50,7 +49,7 @@ export const ExpensesMobile = () => {
                     fontWeight="semibold"
                   >{`-${item.amount}$`}</Text>
                   <Text color="gray.400" mt="-5px" fontSize="sm">
-                    {item.date}
+                    {item.date.split("T")[1].slice(0, 5)}
                   </Text>
                 </Box>
                 <Button

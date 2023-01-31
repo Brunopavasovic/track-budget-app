@@ -1,15 +1,14 @@
 import { Box, Text } from "@chakra-ui/react";
 
-export const DateInfoTrack = () => {
-  const now = new Date().toLocaleDateString("en-us", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  });
+interface DateProps {
+  date: string;
+}
+
+export const DateInfoTrack = ({ date }: DateProps) => {
   return (
     <Box display="flex" alignItems="center" w="full" bg="gray.100" h="30px">
       <Text ml="5%" fontSize="sm" fontWeight="semibold" color="gray.500">
-        {now}
+        {date.split("T")[0]}
       </Text>
     </Box>
   );
