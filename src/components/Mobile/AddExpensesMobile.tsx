@@ -20,7 +20,7 @@ export const AddExpensesMobile = () => {
     <Box
       height="full"
       flexDirection="column"
-      display={["flex", "flex", "flex"]}
+      display={["flex", "flex", "none"]}
       alignItems="center"
       h="full"
     >

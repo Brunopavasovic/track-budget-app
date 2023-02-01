@@ -14,9 +14,7 @@ const savedItems = () => {
 export const BudgetItemsContext = createContext<BudgetContextType | null>(null);
 export const BudgetItemsProvider = ({ children }: ShowItemsProviderProps) => {
   const [items, setItems] = useState<BudgetItems[]>(savedItems);
-  const [splitItems, setSplitItems] = useState<Record<string, NewItemsType[]>>(
-    {}
-  );
+  const [splitItems, setSplitItems] = useState<[string, BudgetItems[]][]>([]);
 
   useEffect(() => {
     const spliting = items.reduce(
@@ -26,10 +24,15 @@ export const BudgetItemsProvider = ({ children }: ShowItemsProviderProps) => {
         return { ...acc, [key[0]]: [...(prev ?? []), item] };
       },
       {}
-    ) as unknown as Record<string, NewItemsType[]>;
+    ) as unknown as Record<string, BudgetItems[]>;
     const res = Object.entries(spliting);
+    const sort = res.sort((a, b) => {
+      const dateA: number = new Date(a[0]).getTime();
+      const dateB: number = new Date(b[0]).getTime();
+      return dateB - dateA;
+    });
     console.log(res);
-    /* setSplitItems(res); */
+    setSplitItems(sort);
 
     // aha... ok typescript ti je ponekad malo retardiran
     // u typescriptu Record<string, string> =/= {[key:string]: string}

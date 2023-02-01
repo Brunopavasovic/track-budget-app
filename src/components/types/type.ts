@@ -4,7 +4,7 @@ export interface BudgetContextType {
   onSubmit: (data: BudgetItems) => void;
   removeItem: (id: number) => void;
   items: BudgetItems[];
-  splitItems: Record<string, NewItemsType[]>;
+  splitItems: [string, BudgetItems[]][];
 }
 
 export interface BudgetItems {
